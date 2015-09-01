@@ -34,6 +34,9 @@ sed -i -e "s/gateway.*/gateway	172.25.8.1/" /etc/network/interfaces
 echo $HOSTNAME > /etc/hostname
 sed -i -e "s/127.0.1.1.*/127.0.1.1	$HOSTNAME/" /etc/hosts
 
+# Deshabilitamos o Network Manager
+sed -i -e "s/managed=true/managed=false/" /etc/NetworkManager/NetworkManager.conf
+
 zenity --question --text="Completaronse todas as tarefas con éxito.\nQueres reiniciar o equipo?"
 
 if [ $? -eq 0 ] ; then
