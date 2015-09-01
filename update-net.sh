@@ -5,8 +5,8 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-$EDIFICIO=001
-$AULA=001
+EDIFICIO=001
+AULA=001
 
 if cat /proc/net/dev | grep "eth0:" ; then
 
@@ -26,6 +26,7 @@ HOSTNAME=$(zenity --entry --text="Introduce o nome do equipo:" --entry-text=e"$E
 
 sed -i -e "s/address.*/address	172.25.9.$PC/" /etc/network/interfaces
 sed -i -e "s/dns -.*/dns-nameservers 192.168.40.12 192.168.40.21/" /etc/network/interfaces
+sed -i -e "s/gateway.*/gateway	172.25.8.1/" /etc/network/interfaces
 
 echo $HOSTNAME > /etc/hostname
 sed -i -e "s/127.0.1.1.*/127.0.1.1	$HOSTNAME/" /etc/hosts
