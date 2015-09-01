@@ -31,3 +31,8 @@ sed -i -e "s/gateway.*/gateway	172.25.8.1/" /etc/network/interfaces
 echo $HOSTNAME > /etc/hostname
 sed -i -e "s/127.0.1.1.*/127.0.1.1	$HOSTNAME/" /etc/hosts
 
+zenity --question --text="Completaronse todas as tarefas con éxito.\nQueres reiniciar o equipo?"
+
+if [ $? -eq 0 ] ; then
+	reboot
+fi
