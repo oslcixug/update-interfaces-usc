@@ -20,6 +20,9 @@ else
 
 fi
 
+# Solución para o seguinte erro: zenity: Gtk-WARNING **: cannot open display
+xhost local:$USER
+
 PC=$(zenity --entry --text="- EDIFICIO - $EDIFICIO\n- AULA - $AULA\n\nIntroduce o número do equipo:" --title="Oficina de Software Libre")
 
 HOSTNAME=$(zenity --entry --text="Introduce o nome do equipo:" --entry-text=e"$EDIFICIO"a"$AULA"h"$PC"l --title="Oficina de Software Libre")
