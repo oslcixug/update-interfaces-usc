@@ -5,6 +5,7 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+# Variables globais. Deben ser modificadas cos valores indicados para cada aula.
 EDIFICIO=170
 VLAN=009
 
@@ -46,6 +47,10 @@ fi
 sed -i -e "s/address.*/address	172.25.9.$((10#$PC))/" /etc/network/interfaces
 sed -i -e "s/dns -.*/dns-nameservers 192.168.40.21 192.168.40.12/" /etc/network/interfaces
 sed -i -e "s/gateway.*/gateway	172.25.8.1/" /etc/network/interfaces
+
+# Paramos a interface de rede, e volvemos a levantala coa nova configuración
+ifdown $INTERFACE
+ifup $INTERFACE
 
 echo $HOSTNAME > /etc/hostname
 sed -i -e "s/127.0.1.1.*/127.0.1.1	$HOSTNAME/" /etc/hosts
