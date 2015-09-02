@@ -22,8 +22,7 @@ if cat /proc/net/dev | grep "eth0:" ; then
 else
 
 	INTERFACE="eth1"
-	sed -i -e "s/auto eth0/auto eth1/" /etc/network/interfaces
-	sed -i -e "s/iface eth0.*/iface eth1 inet static/" /etc/network/interfaces
+	sed -i -e "s/eth0/eth1/g" /etc/network/interfaces
 
 fi
 
