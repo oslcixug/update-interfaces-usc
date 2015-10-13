@@ -9,6 +9,11 @@ fi
 EDIFICIO=170
 VLAN=009
 
+# Na instalación da aula había un erro nas URL's dos repos de CRAN
+# Modificacion de ficheiro r-cran.list
+rm /etc/apt/sources.list.d/r-cran.list~
+echo "deb http://ftp.cixug.es/CRAN/bin/linux/ubuntu precise/" > /etc/apt/sources.list.d/r-cran.list
+
 # Para evitar posibles conflictos, paramos o servizo network-manager
 service network-manager stop
 
