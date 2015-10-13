@@ -67,7 +67,7 @@ if [ $? -ne 0 ] ; then
 exit 1
 fi
 
-sed -i -e "s/address.*/address	172.25.$((10#$VLAN))9.$((10#$PC))/" /etc/network/interfaces
+sed -i -e "s/address.*/address	172.25.$((10#$VLAN)).$((10#$PC))/" /etc/network/interfaces
 sed -i -e "s/dns -.*/dns-nameservers 192.168.40.21 192.168.40.12/" /etc/network/interfaces
 sed -i -e "s/gateway.*/gateway	${ROUTER}/" /etc/network/interfaces
 
